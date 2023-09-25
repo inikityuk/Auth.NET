@@ -1,22 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <XamarinAuthCustomPreprocessorConstantsDefines></XamarinAuthCustomPreprocessorConstantsDefines>
     <Version>1.0.0</Version>
     <RootNamespace>Xamarin.Auth</RootNamespace>
     <AssemblyName>Xamarin.Auth</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_6</DefineConstants>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PORTABLE;$(XamarinAuthCustomPreprocessorConstantsDefines)</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD1_6;$(XamarinAuthCustomPreprocessorConstantsDefines)</DefineConstants>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;PORTABLE;$(XamarinAuthCustomPreprocessorConstantsDefines)</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="AccountStore\CryptoAccountManager\**" />
-    <EmbeddedResource Remove="AccountStore\CryptoAccountManager\**" />
-    <None Remove="AccountStore\CryptoAccountManager\**" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Xamarin.Auth.Common.LinkSource\AccountStore\Account.cs">
       <Link>AccountStore\Account.cs</Link>
@@ -24,18 +31,11 @@
     <Compile Include="..\Xamarin.Auth.Common.LinkSource\AccountStore\AccountResult.cs">
       <Link>AccountStore\AccountResult.cs</Link>
     </Compile>
-    <Compile Include="..\Xamarin.Auth.Common.LinkSource\OAuth\OAuth2\GrantType.cs" Link="OAuth\OAuth2\GrantType.cs" />
-    <Compile Include="..\Xamarin.Auth.Common.LinkSource\OAuth\OAuth2\ResponseType.cs" Link="OAuth\OAuth2\ResponseType.cs" />
-    <Compile Include="..\Xamarin.Auth.Common.LinkSource\OAuth\OAuth2\State.cs" Link="OAuth\OAuth2\State.cs" />
-    <Compile Include="..\Xamarin.Auth.Portable\AccountStore\AccountStore.Portable.cs">
-      <Link>AccountStore\AccountStore.Portable.cs</Link>
+    <Compile Include="..\Xamarin.Auth.Common.LinkSource\AccountStore\AccountStore.cs">
+      <Link>AccountStore\AccountStore.cs</Link>
     </Compile>
     <Compile Include="..\Xamarin.Auth.Common.LinkSource\AccountStore\AccountStore.Async.cs">
       <Link>AccountStore\AccountStore.Async.cs</Link>
-      <DependentUpon>AccountStore\AccountStore.cs</DependentUpon>
-    </Compile>
-    <Compile Include="..\Xamarin.Auth.Common.LinkSource\AccountStore\AccountStore.cs">
-      <Link>AccountStore\AccountStore.cs</Link>
     </Compile>
     <Compile Include="..\Xamarin.Auth.Common.LinkSource\AccountStore\AccountStoreException.cs">
       <Link>AccountStore\AccountStoreException.cs</Link>
@@ -121,23 +121,11 @@
     <Compile Include="..\Xamarin.Auth.Common.LinkSource\WebUtilities.cs">
       <Link>WebUtilities.cs</Link>
     </Compile>
-    <Compile Include="..\Xamarin.Auth.Common.LinkSource\PlatformSpecific\FileHelper.cs">
-      <Link>PlatformSpecific\FileHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.Auth.Common.LinkSource\System\DecimalExtensions.cs">
-      <Link>System\DecimalExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.Auth.Portable\System\Reflection\Extensions.cs">
-      <Link>System\Reflection\Extensions.cs</Link>
-    </Compile>
     <Compile Include="..\Xamarin.Auth.Common.LinkSource\UINativeNonIntegratedBrowsers\AuthenticationUI.cs">
       <Link>UINativeNonIntegratedBrowsers\AuthenticationUI.cs</Link>
     </Compile>
     <Compile Include="..\Xamarin.Auth.Common.LinkSource\UINativeNonIntegratedBrowsers\AuthenticationUIType.cs">
       <Link>UINativeNonIntegratedBrowsers\AuthenticationUIType.cs</Link>
-    </Compile>
-    <Compile Include="..\Xamarin.Auth.Portable\UINativeNonIntegratedBrowsers\WebAuthenticator.NativeUI.Portable.cs">
-      <Link>UINativeNonIntegratedBrowsers\WebAuthenticator.NativeUI.Portable.cs</Link>
     </Compile>
     <Compile Include="..\Xamarin.Auth.Common.LinkSource\UINativeNonIntegratedBrowsers\WebAuthenticator.NativeUI.cs">
       <Link>UINativeNonIntegratedBrowsers\WebAuthenticator.NativeUI.cs</Link>
@@ -148,8 +136,14 @@
     <Compile Include="..\Xamarin.Auth.Common.LinkSource\Plugins\IRunInvoker.cs">
       <Link>Plugins\IRunInvoker.cs</Link>
     </Compile>
-    <Compile Include="..\Xamarin.Auth.Portable\Plugins\UIThreadRunInvoker.Portable.cs">
-      <Link>Plugins\UIThreadRunInvoker.Portable.cs</Link>
+    <Compile Include="..\Xamarin.Auth.Common.LinkSource\OAuth\OAuth2\State.cs">
+      <Link>OAuth\OAuth2\State.cs</Link>
+    </Compile>
+    <Compile Include="..\Xamarin.Auth.Common.LinkSource\OAuth\OAuth2\GrantType.cs">
+      <Link>OAuth\OAuth2\GrantType.cs</Link>
+    </Compile>
+    <Compile Include="..\Xamarin.Auth.Common.LinkSource\OAuth\OAuth2\ResponseType.cs">
+      <Link>OAuth\OAuth2\ResponseType.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
