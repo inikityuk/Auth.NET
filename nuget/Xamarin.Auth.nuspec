@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>
+            Xamarin.Auth.NET
+        </id>
+        <title>
+            Xamarin.Auth.NET
+        </title>
+		<authors>
+			Igor Nikityuk, Microsoft
+		</authors>
+		<version>
+			1.0.0
+        </version>
+        <projectUrl>
+            https://github.com/inikityuk/Xamarin.Auth.NET
+        </projectUrl>
+        <description>
+            A cross-platform API for authenticating users and storing their accounts.
+        </description>
+        <readme>README.md</readme>
+        <license type="file">LICENSE</license>
+        <dependencies> 
+            <group targetFramework="net7.0">
+                <dependency id="Newtonsoft.Json" version="13.0.3" include="All" />            
+            </group>
+            <group targetFramework="net7.0-ios16.1">
+                <dependency id="Newtonsoft.Json" version="13.0.3" include="All" />            
+            </group>
+            <group targetFramework="net7.0-android33.0">
+                <dependency id="Xamarin.AndroidX.Browser" version="1.5.0.3" include="All" />
+                <dependency id="Newtonsoft.Json" version="13.0.3" include="All" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\README.md" target="README.md"/>
+        <file src="..\LICENSE" target="LICENSE"/>
+
+        <file
+            src="..\source\Core\Xamarin.Auth.NetStandard16\bin\Release\net7.0\Xamarin.Auth.dll"
+            target="lib/net7.0/Xamarin.Auth.dll"
+            >
+        </file>
+
+        <file
+            src="..\source\Core\Xamarin.Auth.NetStandard16\bin\Release\net7.0\Xamarin.Auth.pdb"
+            target="lib/net7.0/Xamarin.Auth.pdb"
+            >
+        </file>
+
+        <!--
+            Xamarin.Android
+        -->
+        <file
+            src="..\source\Core\Xamarin.Auth.XamarinAndroid\bin\Release\net7.0-android\Xamarin.Auth.dll"
+            target="lib/net7.0-android33.0/Xamarin.Auth.dll"
+            >
+        </file>
+        <file
+            src="..\source\Core\Xamarin.Auth.XamarinAndroid\bin\Release\net7.0-android\Xamarin.Auth.pdb"
+            target="lib/net7.0-android33.0/Xamarin.Auth.pdb"
+            >
+        </file>
+        <file
+            src="..\source\Core\Xamarin.Auth.XamarinAndroid\bin\Release\net7.0-android\Xamarin.Auth.aar"
+            target="lib/net7.0-android33.0/Xamarin.Auth.aar"
+            >
+        </file>
+
+        <!-- Xamarin.iOS Unified -->
+        <file
+            src="..\source\Core\Xamarin.Auth.XamarinIOS\bin\Release\net7.0-ios\Xamarin.Auth.dll"
+            target="lib/net7.0-ios16.1/Xamarin.Auth.dll"
+            >
+        </file>
+        <file
+            src="..\source\Core\Xamarin.Auth.XamarinIOS\bin\Release\net7.0-ios\Xamarin.Auth.pdb"
+            target="lib/net7.0-ios16.1/Xamarin.Auth.pdb"
+            >
+        </file>
+    </files>
+</package>
